@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Main from '../../pages/main';
+import Main from '../../pages/Main';
 import GoodsDetail from '../../pages/GoodsDetail';
 import LoginSignup from '../../pages/LoginSignup';
 import UsedGoods from '../../pages/UsedGoods';
@@ -13,7 +13,7 @@ function Router() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Main />} />
-        <Route path='/loginsignops' element={<LoginSignup />} />
+        <Route path='/loginsignups' element={<LoginSignup />} />
         <Route path='/usedgoods' element={<UsedGoods />} />
         <Route path='/bestusedgoods' element={<BestUsedGoods />} />
         <Route path='/usermypages' element={<UserMyPage />} />
