@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 function Card({ width }) {
   return (
-    <CardArea width={width}>
+    <CardArea width={width} margin={'0px 44px 56px 0px'} padding={'20px'}>
       <CardPhoto>
         <img
           alt='갤럭시 Z 폴드 3 5G'
@@ -28,9 +28,8 @@ const CardArea = styled.div`
   width: ${({ width }) => {
     return width ? `${width}px` : '25%';
   }};
-  margin-right: 44px;
-  margin-bottom: 56px;
-  padding: 20px;
+  margin: ${({ margin }) => `${margin}`};
+  padding: ${({ padding }) => padding};
   border-radius: 12px;
   box-shadow: 1px 1px 7px 1px rgba(190, 180, 125, 0.26);
 `;
