@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import { HeartOutlined, HeartFilled, MessageOutlined } from '@ant-design/icons';
 
 function Card({ width }) {
   return (
@@ -12,10 +13,15 @@ function Card({ width }) {
       </CardPhoto>
       <CardDesc>
         <CardTitle>갤럭시 Z 폴드 3 5G</CardTitle>
-        <CardPrice>400,000원</CardPrice>
         <Location>경기도 고양시 일산서구 주엽동</Location>
+        <CardPrice>400,000원</CardPrice>
         <CardCounts>
-          <likes>관심 21</likes>∙<comments>채팅 5</comments>
+          <span>
+          <HeartOutlined />&nbsp; 21
+          </span>
+          <span>
+          <MessageOutlined />&nbsp; 5
+          </span>
         </CardCounts>
       </CardDesc>
     </CardArea>
@@ -58,37 +64,41 @@ const CardDesc = styled.div`
   margin-top: 12px;
 `;
 const CardTitle = styled.div`
-  font-size: 16px;
-  letter-spacing: -0.02px;
-  color: #212529;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  margin-bottom: 4px;
-  line-height: 1.5;
-  font-weight: normal;
-`;
+    font-size: 16px;
+    letter-spacing: -0.02px;
+    color: #212529;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    line-height: 1.5;
+    font-weight: 800;
+    `
 
 const CardPrice = styled.div`
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.5;
-  margin-bottom: 4px;
-`;
+color: #826464;
+font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 4px;
+    `
 const Location = styled.div`
-  font-size: 13px;
-  color: #212529;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  margin-bottom: 4px;
-  line-height: 1.5;
-`;
-const Likes = styled.div``;
+font-size: 13px;
+    color: #212529;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    line-height: 1.5;
+`
 
-const Comments = styled.div``;
 
 const CardCounts = styled.div`
-  color: #868e96;
-  font-size: 13px;
-`;
+padding-top: 8px;
+    font-size: 13px;
+    display: flex;
+    margin-left: 50%;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    `
