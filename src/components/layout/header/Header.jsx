@@ -28,8 +28,8 @@ function Header() {
       </Items>
       <Items gap={200}>
         <input />
-        <Button width={'71px'} height={'42px'} outlinecolor={'#C6C7C0'} bc={'#fff'} linewidth={'1px'} color={'#C6C7C0'}>
-          로그인
+        <Button width={'71px'} height={'42px'} outlinecolor={'#C6C7C0'} bc={'#fff'} linewidth={'1px'}>
+          <Text>로그인</Text>
         </Button>
       </Items>
     </HeaderContainer>
