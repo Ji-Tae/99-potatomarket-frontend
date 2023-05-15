@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Children } from 'react';
 import { styled } from 'styled-components';
 import { HeartOutlined, HeartFilled, MessageOutlined } from '@ant-design/icons';
 import Button from './Button';
 import Text from './Text';
 
-function Card({ width }) {
+function Card({ width , children }) {
   return (
     <CardArea width={width} margin={'0px 44px 56px 0px'} padding={'20px'}>
       <CardPhoto>
@@ -39,6 +39,7 @@ function Card({ width }) {
             </Text>
           </Button>
         </Buttons>
+        {children}
       </CardDesc>
     </CardArea>
   );
@@ -117,10 +118,4 @@ const CardCounts = styled.div`
   align-items: center;
   justify-content: space-between;
   font-size: 13px;
-`;
-
-const Buttons = styled.div`
-  margin-top: 15px;
-  justify-content: space-between;
-  display: flex;
 `;
