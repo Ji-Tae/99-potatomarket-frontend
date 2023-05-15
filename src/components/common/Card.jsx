@@ -6,7 +6,7 @@ import Text from './Text';
 
 function Card({ width }) {
   return (
-    <CardArea width={width} padding={'20px'}>
+    <CardArea width={width} margin={'0px 44px 56px 0px'} padding={'20px'}>
       <CardPhoto>
         <img
           alt='갤럭시 Z 폴드 3 5G'
