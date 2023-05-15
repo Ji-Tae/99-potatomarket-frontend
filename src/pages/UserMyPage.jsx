@@ -1,62 +1,63 @@
 import React from 'react';
 import Card from '../components/common/Card';
-import  styled  from 'styled-components';
+import styled from 'styled-components';
 import { Layout } from '../components/common/Layout';
 
 function UsedGoods() {
   return (
-<Layout>
+    <Layout>
       {/* 관심목록 */}
-      
-      <LikeList>
-        <LikeListTitle>
-        </LikeListTitle>
+
+      <CardList>
+        <Title>관심목록</Title>
         <Cards>
           <Card width={`15%`} />
           <Card width={`15%`} />
           <Card width={`15%`} />
+          <Card width={`15%`} />
         </Cards>
-      </LikeList>
-      
+      </CardList>
+
       {/* 판매중 */}
-     
-      <SellingList>
-        <SellingListTitle>
-        </SellingListTitle>
+
+      <CardList>
+        <Title>판매중</Title>
         <Cards>
           <Card width={`15%`} />
           <Card width={`15%`} />
           <Card width={`15%`} />
+          <Card width={`15%`} />
         </Cards>
-      </SellingList>
-    
+      </CardList>
+
       {/* 거래완료 */}
-    
-      <DoneList>
-        <DoneListTitle>
-        </DoneListTitle>
+
+      <CardList>
+        <Title>거래 완료</Title>
         <Cards>
           <Card width={`15%`} />
           <Card width={`15%`} />
           <Card width={`15%`} />
+          <Card width={`15%`} />
         </Cards>
-      </DoneList>
-      
+      </CardList>
     </Layout>
-  )
+  );
 }
 
 export default UsedGoods;
 
-const LikeList = styled.div`
-width: 70%;
-`
-const LikeListTitle = styled.div``
+const CardList = styled.div`
+  width: 100%;
+  margin: 100px 0px;
+`;
+const Title = styled.div`
+  padding-left: 115px;
+`;
 const Cards = styled.div`
-width:100%;
-display: flex;
-`
-const SellingList = styled.div``
-const SellingListTitle = styled.div``
-const DoneList = styled.div``
-const DoneListTitle = styled.div``
+  gap: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
