@@ -2,11 +2,12 @@ import React from 'react';
 import { styled } from 'styled-components';
 import Text from '../../common/Text';
 import Button from '../../common/Button';
+import SearchInput from './SearchInput';
 
 function Header() {
   return (
     <HeaderContainer>
-      <Items>
+      <Items jc={'space-around'}>
         <TitleItemBox>
           <Text fontSize={'32px'} fontWeight={'bold'} color={'#BeB47d'}>
             감자 마켓
@@ -26,8 +27,8 @@ function Header() {
           나의 거래
         </Text>
       </Items>
-      <Items gap={200}>
-        <input />
+      <Items gap={100} jc={'flex-end'}>
+        <SearchInput />
         <Button width={'71px'} height={'42px'} outlinecolor={'#C6C7C0'} bc={'#fff'} linewidth={'1px'}>
           <Text>로그인</Text>
         </Button>
@@ -37,6 +38,8 @@ function Header() {
 }
 
 const HeaderContainer = styled.div`
+  max-width: 100%;
+  min-width: 700px;
   padding: 0px 120px 0px 120px;
   display: flex;
   align-items: center;
@@ -54,9 +57,10 @@ const TitleItemBox = styled.div`
   justify-content: center;
 `;
 const Items = styled.div`
+  min-width: 700px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: ${({ jc }) => `${jc}`};
   gap: ${({ gap }) => `${gap}px`};
 `;
 

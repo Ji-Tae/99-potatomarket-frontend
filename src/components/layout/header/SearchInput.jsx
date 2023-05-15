@@ -1,7 +1,7 @@
-import React from 'react';
+import InputBox from '../../common/InputBox';
 
 function SearchInput() {
-  return <div>SearchInput</div>;
+  return <InputBox></InputBox>;
 }
 
 export default SearchInput;
