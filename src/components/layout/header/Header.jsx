@@ -7,18 +7,32 @@ import { useNavigate } from 'react-router-dom';
 
 function Header() {
   const navigate = useNavigate();
-  //로그인과 회원가입 할 수 있는 페이지로 넘어가는 함수
+
+  const goHome = () => {
+    navigate('/');
+  };
+
   const goLogin = () => {
     navigate('/loginsignups');
   };
+
   const goMyPage = () => {
     navigate('/usermypages');
   };
+
+  const goUsedGoods = () => {
+    navigate('/usedgoods');
+  };
+
+  const goBestUsedGoods = () => {
+    navigate('/bestusedgoods');
+  };
+
   return (
     <HeaderContainer>
       <Items jc={'space-around'}>
         <TitleItemBox>
-          <Text fontSize={'32px'} fontWeight={'bold'} color={'#BeB47d'}>
+          <Text fontSize={'32px'} fontWeight={'bold'} color={'#BeB47d'} cursor={'pointer'} onClick={goHome}>
             감자 마켓
           </Text>
           <img
@@ -26,20 +40,29 @@ function Header() {
             alt='타이틀 사진'
           />
         </TitleItemBox>
-        <Text margin={'0px 20px 0px 40px'} fontSize={'24px'} fontWeight={600} color={'#9e7979'}>
+        <Text
+          margin={'0px 20px 0px 40px'}
+          fontSize={'24px'}
+          fontWeight={600}
+          color={'#9e7979'}
+          cursor={'pointer'}
+          onClick={goUsedGoods}>
           중고 매물
         </Text>
-        <Text margin={'0px 20px 0px 20px'} fontSize={'24px'} fontWeight={600} color={'#9e7979'}>
+        <Text
+          margin={'0px 20px 0px 20px'}
+          fontSize={'24px'}
+          fontWeight={600}
+          color={'#9e7979'}
+          cursor={'pointer'}
+          onClick={goBestUsedGoods}>
           인기 매물
-        </Text>
-        <Text margin={'0px 20px 0px 20px'} fontSize={'24px'} fontWeight={600} color={'#9e7979'}>
-          나의 거래
         </Text>
       </Items>
       <Items jc={'flex-end'}>
         <SearchInput />
         <ButtonGrop>
-          {/* <Button
+          <Button
             width={'71px'}
             height={'42px'}
             outlinecolor={'#C6C7C0'}
@@ -47,11 +70,11 @@ function Header() {
             linewidth={'1px'}
             onClick={goLogin}>
             <Text>로그인</Text>
-          </Button> */}
+          </Button>
 
           {/* 로그인이 구현 되지 않아 잠시 묶어둔것입니다. */}
 
-          <Button
+          {/* <Button
             margin={'0 10px 0 0'}
             width={'90px'}
             height={'42px'}
@@ -63,7 +86,7 @@ function Header() {
           </Button>
           <Button width={'71px'} height={'42px'} outlinecolor={'#C6C7C0'} bc={'#fff'} linewidth={'1px'}>
             <Text>로그아웃</Text>
-          </Button>
+          </Button> */}
         </ButtonGrop>
       </Items>
     </HeaderContainer>
