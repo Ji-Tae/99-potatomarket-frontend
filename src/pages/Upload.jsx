@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '../components/common/Layout';
+import Layout from '../components/common/Layout';
 import { styled } from 'styled-components';
 import Text from '../components/common/Text';
 import Button from '../components/common/Button';
@@ -16,40 +16,46 @@ function Upload() {
           />
         </CardPhoto>
         <UploadTitle>
-          <Text fontSize={'25px'} fontWeight={'bold'} color={'#9e7979'}>글 제목</Text>
+          <Text fontSize={'25px'} fontWeight={'bold'} color={'#9e7979'}>
+            글 제목
+          </Text>
           <input></input>
         </UploadTitle>
         <UploadPrice>
-          <Text fontSize={'25px'} fontWeight={'bold'} color={'#9e7979'}>가격</Text>
+          <Text fontSize={'25px'} fontWeight={'bold'} color={'#9e7979'}>
+            가격
+          </Text>
           <input></input>
         </UploadPrice>
         <UploadContent>
-          <Text fontSize={'25px'} fontWeight={'bold'} color={'#9e7979'}>글 내용</Text>
+          <Text fontSize={'25px'} fontWeight={'bold'} color={'#9e7979'}>
+            글 내용
+          </Text>
           <input></input>
         </UploadContent>
-        <div style={{width:'30%', margin:'auto'}}>
+        <div style={{ width: '30%', margin: 'auto' }}>
           <Button width={'100%'} height={'45px'} bc={'#9e7979'}>
-          <Text fontSize={'25px'} fontWeight={'bold'} color={'#ffffff'}>게시물 올리기</Text>
-        </Button>
+            <Text fontSize={'25px'} fontWeight={'bold'} color={'#ffffff'}>
+              게시물 올리기
+            </Text>
+          </Button>
         </div>
-        
       </Container>
     </Layout>
-  )
-
+  );
 }
 
 export default Upload;
 
 const PostTitle = styled.div`
-  display :flex;
+  display: flex;
   justify-content: center;
   font-size: 35px;
   font-weight: bold;
-  color:rgba(190, 180, 125, 1);
+  color: rgba(190, 180, 125, 1);
   margin-top: 70px;
   margin-bottom: 70px;
-`
+`;
 
 const Container = styled.div`
   width: 50%;
@@ -62,29 +68,29 @@ const Container = styled.div`
   border-radius: 12px;
   box-shadow: 1px 1px 7px 1px rgba(190, 180, 125, 0.26);
   padding: 50px;
-`
+`;
 
 const CardPhoto = styled.div`
   width: 60%;
   height: 400px;
   background-color: beige;
-`
+`;
 
 const UploadTitle = styled.div`
   display: flex;
   margin-top: 20px;
-  justify-content: space-between
-`
+  justify-content: space-between;
+`;
 
 const UploadPrice = styled.div`
   display: flex;
   margin-top: 20px;
-  justify-content: space-between
-`
+  justify-content: space-between;
+`;
 
 const UploadContent = styled.div`
   display: flex;
   margin-top: 20px;
   margin-bottom: 50px;
-  justify-content: space-between
-`
+  justify-content: space-between;
+`;

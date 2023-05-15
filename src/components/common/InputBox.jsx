@@ -2,6 +2,8 @@ import React from 'react';
 import { styled, css } from 'styled-components';
 
 function InputBox(props) {
+  //outlinecolor: 외과 선 색입니다.
+  //linewidth: 선의 굵기입니다.
   const { outlinecolor, linewidth, placeholder, width, height, padding, margin } = props;
   return (
     <InputStyled

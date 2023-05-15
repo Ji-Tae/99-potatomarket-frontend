@@ -1,7 +1,7 @@
 import React from 'react';
 import { css, styled } from 'styled-components';
 
-//외곽선이 보이는 버튼입니다.
+//재사용성 컴포넌트
 function Button(props) {
   //프롭스를 구조분해 할당 해서 선언 한 겁니다.
   //bc: background-color

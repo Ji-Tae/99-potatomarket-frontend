@@ -1,18 +1,27 @@
 import React from 'react';
 import Card from '../components/common/Card';
 import styled from 'styled-components';
-import { Layout } from '../components/common/Layout';
+import Layout from '../components/common/Layout';
 import Text from '../components/common/Text';
 import Button from '../components/common/Button';
 
 function UserMyPage() {
   return (
-    <Layout >
+    <Layout>
       <PostTitle>나의 거래</PostTitle>
-      <div style={{display:'flex', alignItems:'center', justifyContent:'flex-end', position:'relative', right:'10%'}}>
-      <Button width={'10%'} height={'45px'} bc={'#9e7979'}>
-        <Text fontSize={'25px'} fontWeight={'bold'} color={'#ffffff' }>글쓰기</Text>
-      </Button>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'flex-end',
+          position: 'relative',
+          right: '10%',
+        }}>
+        <Button width={'10%'} height={'45px'} bc={'#9e7979'}>
+          <Text fontSize={'25px'} fontWeight={'bold'} color={'#ffffff'}>
+            글쓰기
+          </Text>
+        </Button>
       </div>
       {/* 관심목록 */}
       <CardList>
@@ -62,21 +71,21 @@ const CardList = styled.div`
 `;
 
 const Title = styled.div`
-color:rgba(158, 121, 121, 1);
-font-size: 25px;
-font-weight: 700;
-    margin: 0 0 1rem;
+  color: rgba(158, 121, 121, 1);
+  font-size: 25px;
+  font-weight: 700;
+  margin: 0 0 1rem;
 `;
 const Cards = styled.div`
-gap:50px;
-display: flex;
+  gap: 50px;
+  display: flex;
 `;
 
 const PostTitle = styled.div`
-  display :flex;
+  display: flex;
   justify-content: center;
   font-size: 35px;
   font-weight: bold;
-  color:rgba(190, 180, 125, 1);
+  color: rgba(190, 180, 125, 1);
   margin-top: 70px;
-`
+`;
