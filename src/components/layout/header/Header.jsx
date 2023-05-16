@@ -4,8 +4,10 @@ import Text from '../../common/Text';
 import Button from '../../common/Button';
 import SearchInput from './SearchInput';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 function Header() {
+  const cookie = Cookies.get('token');
   const navigate = useNavigate();
 
   const goHome = () => {
@@ -61,33 +63,35 @@ function Header() {
       </Items>
       <Items jc={'flex-end'}>
         <SearchInput />
-        <ButtonGrop>
-          <Button
-            width={'71px'}
-            height={'42px'}
-            outlinecolor={'#C6C7C0'}
-            bc={'#fff'}
-            linewidth={'1px'}
-            onClick={goLogin}>
-            <Text>로그인</Text>
-          </Button>
-
-          {/* 로그인이 구현 되지 않아 잠시 묶어둔것입니다. */}
-
-          {/* <Button
-            margin={'0 10px 0 0'}
-            width={'90px'}
-            height={'42px'}
-            outlinecolor={'#C6C7C0'}
-            bc={'#fff'}
-            linewidth={'1px'}
-            onClick={goMyPage}>
-            <Text>마이페이지</Text>
-          </Button>
-          <Button width={'71px'} height={'42px'} outlinecolor={'#C6C7C0'} bc={'#fff'} linewidth={'1px'}>
-            <Text>로그아웃</Text>
-          </Button> */}
-        </ButtonGrop>
+        {cookie ? (
+          <ButtonGrop>
+            <Button
+              margin={'0 10px 0 0'}
+              width={'90px'}
+              height={'42px'}
+              outlinecolor={'#C6C7C0'}
+              bc={'#fff'}
+              linewidth={'1px'}
+              onClick={goMyPage}>
+              <Text>마이페이지</Text>
+            </Button>
+            <Button width={'71px'} height={'42px'} outlinecolor={'#C6C7C0'} bc={'#fff'} linewidth={'1px'}>
+              <Text>로그아웃</Text>
+            </Button>
+          </ButtonGrop>
+        ) : (
+          <ButtonGrop>
+            <Button
+              width={'71px'}
+              height={'42px'}
+              outlinecolor={'#C6C7C0'}
+              bc={'#fff'}
+              linewidth={'1px'}
+              onClick={goLogin}>
+              <Text>로그인</Text>
+            </Button>
+          </ButtonGrop>
+        )}
       </Items>
     </HeaderContainer>
   );
