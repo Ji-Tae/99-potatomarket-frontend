@@ -2,9 +2,10 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { HeartOutlined, HeartFilled, MessageOutlined } from '@ant-design/icons';
 
-function Card({ width , children }) {
+function Card({ width, children, height }) {
   return (
     <CardArea width={width} padding={'20px'}>
+
       <CardPhoto>
         <img
           alt='갤럭시 Z 폴드 3 5G'
@@ -33,12 +34,13 @@ function Card({ width , children }) {
 
 export default Card;
 
-const CardArea = styled.div`
+export const CardArea = styled.div`
   width: ${({ width }) => {
     return width ? `${width}px` : '25%';
   }};
   margin: ${({ margin }) => `${margin}`};
   padding: ${({ padding }) => padding};
+  height: ${({ height }) => height};
   border-radius: 12px;
   background-color:white;
   box-shadow: 1px 1px 7px 1px rgba(190, 180, 125, 0.26);

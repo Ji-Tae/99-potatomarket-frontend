@@ -4,7 +4,7 @@ import { styled, css } from 'styled-components';
 function InputBox(props) {
   //outlinecolor: 외과 선 색입니다.
   //linewidth: 선의 굵기입니다.
-  const { outlinecolor, linewidth, placeholder, width, height, padding, margin } = props;
+  const { outlinecolor, linewidth, placeholder, width, height, padding, margin, shadow } = props;
   return (
     <InputStyled
       margin={margin}
@@ -12,6 +12,7 @@ function InputBox(props) {
       linewidth={linewidth}
       placeholder={placeholder}
       width={width}
+      shadow={shadow}
       height={height}
       padding={padding}
     />
@@ -32,5 +33,7 @@ const InputStyled = styled.input`
       : css`
           border: none;
         `}
+  box-shadow: ${({ shadow }) => `${shadow}`};
 `;
+
 export default InputBox;

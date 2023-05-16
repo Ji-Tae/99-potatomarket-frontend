@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import Card from '../components/common/Card';
 import styled from 'styled-components';
 import Layout from '../components/common/Layout';
@@ -54,16 +54,19 @@ function UserMyPage() {
           <Card>
             <Buttons>
               <Button width={'55%'} height={'30px'} outlinecolor={'#9e7979'} bc={'white'} linewidth={'2px'}>
+
                 <Text fontSize={'15px'} color={'#9e7979'} fontWeight={'bold'} >거래완료</Text>
               </Button>
               <Button bc={'#9e7979'} width={'40%'} height={'30px'} >
                 <Text fontSize={'15px'} color={'white'} fontWeight={'bold'}>삭제</Text>
+
               </Button>
             </Buttons>
           </Card>
           <Card>
             <Buttons>
               <Button width={'55%'} height={'30px'} outlinecolor={'#9e7979'} bc={'white'} linewidth={'2px'}>
+
                 <Text fontSize={'15px'} color={'#9e7979'} fontWeight={'bold'} >거래완료</Text>
               </Button>
               <Button bc={'#9e7979'} width={'40%'} height={'30px'} >
@@ -151,8 +154,10 @@ const Buttons = styled.div`
   margin-top: 15px;
   justify-content: space-between;
   display: flex;
-  `
+  `;
 
 //더보기버튼 거래완료 가로선 맞추기
 //더보기버튼 스타일 정리
 //컨테이너 밑에 배경색 채우기
+
+
