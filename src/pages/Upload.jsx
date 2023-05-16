@@ -52,9 +52,8 @@ const PostTitle = styled.div`
   justify-content: center;
   font-size: 35px;
   font-weight: bold;
-  color: rgba(190, 180, 125, 1);
-  margin-top: 70px;
-  margin-bottom: 70px;
+  color: #beb47d;
+  padding: 70px;
 `;
 
 const Container = styled.div`
@@ -64,10 +63,10 @@ const Container = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   align-content: center;
-
   border-radius: 12px;
   box-shadow: 1px 1px 7px 1px rgba(190, 180, 125, 0.26);
   padding: 50px;
+  background-color: white;
 `;
 
 const CardPhoto = styled.div`
@@ -94,3 +93,6 @@ const UploadContent = styled.div`
   margin-bottom: 50px;
   justify-content: space-between;
 `;
+
+// 컨테이너 아래 배경 채우기
+// 인풋 컴포넌트 넣으면 레이아웃 무너짐....
