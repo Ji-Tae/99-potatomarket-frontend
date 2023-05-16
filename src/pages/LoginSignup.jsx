@@ -34,10 +34,12 @@ function LoginSignup() {
   //login 제출
   const loginMutation = useMutation(loginPost, {
     onSuccess: (data) => {
-      Cookies.set('token', data.accessToken);
+      Cookies.set('accessToken', data.accessToken);
       Cookies.set('refreshToken', data.refreshToken);
-      alert(data.message);
       goHome();
+    },
+    onError: (error) => {
+      alert(error.response.data.errorMessage);
     },
   });
 

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 function Header() {
-  const cookie = Cookies.get('token');
+  const cookie = Cookies.get('accessToken');
   const navigate = useNavigate();
 
   const goHome = () => {
@@ -28,6 +28,12 @@ function Header() {
 
   const goBestUsedGoods = () => {
     navigate('/bestusedgoods');
+  };
+
+  const logoutHandler = () => {
+    Cookies.remove('accessToken');
+    Cookies.remove('refreshToken');
+    goHome();
   };
 
   return (
@@ -75,7 +81,13 @@ function Header() {
               onClick={goMyPage}>
               <Text>마이페이지</Text>
             </Button>
-            <Button width={'71px'} height={'42px'} outlinecolor={'#C6C7C0'} bc={'#fff'} linewidth={'1px'}>
+            <Button
+              width={'71px'}
+              height={'42px'}
+              outlinecolor={'#C6C7C0'}
+              bc={'#fff'}
+              linewidth={'1px'}
+              onClick={logoutHandler}>
               <Text>로그아웃</Text>
             </Button>
           </ButtonGrop>
