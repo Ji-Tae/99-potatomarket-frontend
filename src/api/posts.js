@@ -1,8 +1,17 @@
-import axios from 'axios';
+import axios from "axios"
 
-const signupPost = async (newUser) => {
-  const respomses = await axios.post(`${process.env.REAT_APP_SERVER_URL}/signup`, newUser);
-  return respomses;
-};
+const uploadPost = async(formData) => {
+  const response = await axios.post(
+    `${process.env.REAT_APP_SERVER_URL}/api/posts`,formData,{
+      headers:{
+        "Content-Type": 'multipart/form-data',
+        Authorization: `Bearer`,
+        refreshToken : `Bearer`
+      }
+    }
+  ) 
+  return response
+} 
 
-export { signupPost };
+//
+export{uploadPost};

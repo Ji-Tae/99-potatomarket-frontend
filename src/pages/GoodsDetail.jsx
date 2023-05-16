@@ -97,7 +97,6 @@ justify-content: center;
 align-items: center;
 margin: auto;
 background-color:aqua;
-
 `
 const UserDesc = styled.div`
 margin-top: 20px;
