@@ -3,6 +3,7 @@ import Layout from '../components/common/Layout';
 import { styled } from 'styled-components';
 import Text from '../components/common/Text';
 import Button from '../components/common/Button';
+import InputBox from '../components/common/InputBox';
 
 function Upload() {
   return (
@@ -19,19 +20,19 @@ function Upload() {
           <Text fontSize={'25px'} fontWeight={'bold'} color={'#9e7979'}>
             글 제목
           </Text>
-          <input></input>
+          <InputBox width={'270px'} height={'28px'} shadow={'1px 1px 3px 1px #9e7979'}/>
         </UploadTitle>
         <UploadPrice>
           <Text fontSize={'25px'} fontWeight={'bold'} color={'#9e7979'}>
             가격
           </Text>
-          <input></input>
+          <InputBox width={'270px'} height={'28px'} shadow={'1px 1px 3px 1px #9e7979'}/>
         </UploadPrice>
         <UploadContent>
           <Text fontSize={'25px'} fontWeight={'bold'} color={'#9e7979'}>
             글 내용
           </Text>
-          <input></input>
+          <InputBox width={'270px'} height={'28px'} shadow={'1px 1px 3px 1px #9e7979'}/>
         </UploadContent>
         <div style={{ width: '30%', margin: 'auto' }}>
           <Button width={'100%'} height={'45px'} bc={'#9e7979'}>
@@ -77,7 +78,7 @@ const CardPhoto = styled.div`
 
 const UploadTitle = styled.div`
   display: flex;
-  margin-top: 20px;
+  margin-top: 50px;
   justify-content: space-between;
 `;
 

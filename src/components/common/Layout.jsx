@@ -12,6 +12,7 @@ function Layout({ children }) {
 
 const Container = styled.div`
   background-color: #fbf7f2;
+  padding-bottom: 70px;
 `;
 const LayoutContainer = styled.div`
   min-width: 800px;
