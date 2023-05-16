@@ -15,7 +15,7 @@ function UserMyPage() {
           alignItems: 'center',
           justifyContent: 'flex-end',
           position: 'relative',
-          right: '10%',
+          right: '15%',
         }}>
         <Button width={'10%'} height={'45px'} bc={'#9e7979'}>
           <Text fontSize={'25px'} fontWeight={'bold'} color={'#ffffff'}>
@@ -25,7 +25,13 @@ function UserMyPage() {
       </div>
       {/* 관심목록 */}
       <CardList>
-        <Title>관심목록</Title>
+        <div style={{display:'flex',justifyContent: 'space-between',alignItems: 'center'}}>
+          <Title>관심목록</Title>
+          <Button style={{display:'flex',}}>
+            <Title style={{fontSize:'17px'}}>더보기 ▶︎</Title>
+          </Button>
+          
+        </div>
         <Cards>
           <Card />
           <Card />
@@ -36,54 +42,66 @@ function UserMyPage() {
 
       {/* 판매중 */}
       <CardList>
-        <Title>판매중</Title>
+        <div style={{display:'flex',justifyContent: 'space-between',alignItems: 'center'}}>
+          <Title>판매중</Title>
+          <Button>
+            <Title style={{fontSize:'17px' }}>더보기 ▶︎</Title>
+          </Button>
+          
+        </div>
+
         <Cards>
           <Card>
-          <Buttons> 
-            <Button width={'55%'} height={'30px'} outlinecolor={'#9e7979'} bc={'white'} linewidth={'2px'}>
-              <Text fontSize={'15px'} color={'#9e7979'} fontWeight={'bold'} >거래완료</Text>
-            </Button>
-            <Button bc={'#9e7979'} width={'40%'} height={'30px'} >
-              <Text fontSize={'15px'} color={'white'} fontWeight={'bold'}>삭제</Text>
-            </Button>
-          </Buttons>
+            <Buttons>
+              <Button width={'55%'} height={'30px'} outlinecolor={'#9e7979'} bc={'white'} linewidth={'2px'}>
+                <Text fontSize={'15px'} color={'#9e7979'} fontWeight={'bold'} >거래완료</Text>
+              </Button>
+              <Button bc={'#9e7979'} width={'40%'} height={'30px'} >
+                <Text fontSize={'15px'} color={'white'} fontWeight={'bold'}>삭제</Text>
+              </Button>
+            </Buttons>
           </Card>
           <Card>
-          <Buttons> 
-            <Button width={'55%'} height={'30px'} outlinecolor={'#9e7979'} bc={'white'} linewidth={'2px'}>
-              <Text fontSize={'15px'} color={'#9e7979'} fontWeight={'bold'} >거래완료</Text>
-            </Button>
-            <Button bc={'#9e7979'} width={'40%'} height={'30px'} >
-              <Text fontSize={'15px'} color={'white'} fontWeight={'bold'}>삭제</Text>
-            </Button>
-          </Buttons>
+            <Buttons>
+              <Button width={'55%'} height={'30px'} outlinecolor={'#9e7979'} bc={'white'} linewidth={'2px'}>
+                <Text fontSize={'15px'} color={'#9e7979'} fontWeight={'bold'} >거래완료</Text>
+              </Button>
+              <Button bc={'#9e7979'} width={'40%'} height={'30px'} >
+                <Text fontSize={'15px'} color={'white'} fontWeight={'bold'}>삭제</Text>
+              </Button>
+            </Buttons>
           </Card>
           <Card>
-          <Buttons> 
-            <Button width={'55%'} height={'30px'} outlinecolor={'#9e7979'} bc={'white'} linewidth={'2px'}>
-              <Text fontSize={'15px'} color={'#9e7979'} fontWeight={'bold'} >거래완료</Text>
-            </Button>
-            <Button bc={'#9e7979'} width={'40%'} height={'30px'} >
-              <Text fontSize={'15px'} color={'white'} fontWeight={'bold'}>삭제</Text>
-            </Button>
-          </Buttons>
+            <Buttons>
+              <Button width={'55%'} height={'30px'} outlinecolor={'#9e7979'} bc={'white'} linewidth={'2px'}>
+                <Text fontSize={'15px'} color={'#9e7979'} fontWeight={'bold'} >거래완료</Text>
+              </Button>
+              <Button bc={'#9e7979'} width={'40%'} height={'30px'} >
+                <Text fontSize={'15px'} color={'white'} fontWeight={'bold'}>삭제</Text>
+              </Button>
+            </Buttons>
           </Card>
           <Card>
-          <Buttons> 
-            <Button width={'55%'} height={'30px'} outlinecolor={'#9e7979'} bc={'white'} linewidth={'2px'}>
-              <Text fontSize={'15px'} color={'#9e7979'} fontWeight={'bold'} >거래완료</Text>
-            </Button>
-            <Button bc={'#9e7979'} width={'40%'} height={'30px'} >
-              <Text fontSize={'15px'} color={'white'} fontWeight={'bold'}>삭제</Text>
-            </Button>
-          </Buttons>
+            <Buttons>
+              <Button width={'55%'} height={'30px'} outlinecolor={'#9e7979'} bc={'white'} linewidth={'2px'}>
+                <Text fontSize={'15px'} color={'#9e7979'} fontWeight={'bold'} >거래완료</Text>
+              </Button>
+              <Button bc={'#9e7979'} width={'40%'} height={'30px'} >
+                <Text fontSize={'15px'} color={'white'} fontWeight={'bold'}>삭제</Text>
+              </Button>
+            </Buttons>
           </Card>
         </Cards>
       </CardList>
 
       {/* 거래완료 */}
       <CardList>
-        <Title>거래 완료</Title>
+        <div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <Title>거래 완료</Title>
+          <Button >
+            <Title style={{fontSize:'17px'}}>더보기 ▶︎</Title>
+          </Button>
+        </div>
         <Cards>
           <Card />
           <Card />
@@ -99,7 +117,7 @@ export default UserMyPage;
 
 const CardList = styled.div`
   width: 100%;
-  margin: 100px 0px;
+  margin: 50px 0px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -111,6 +129,9 @@ const Title = styled.div`
   font-size: 25px;
   font-weight: 700;
   margin: 0 0 1rem;
+  display: flex;
+
+
 `;
 const Cards = styled.div`
   gap: 50px;
@@ -123,10 +144,15 @@ const PostTitle = styled.div`
   font-size: 35px;
   font-weight: bold;
   color: rgba(190, 180, 125, 1);
-  margin-top: 70px;
+  padding: 70px;
 `;
 
 const Buttons = styled.div`
   margin-top: 15px;
   justify-content: space-between;
   display: flex;
+  `
+
+//더보기버튼 거래완료 가로선 맞추기
+//더보기버튼 스타일 정리
+//컨테이너 밑에 배경색 채우기

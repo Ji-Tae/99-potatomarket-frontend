@@ -1,12 +1,10 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { styled } from 'styled-components';
 import { HeartOutlined, HeartFilled, MessageOutlined } from '@ant-design/icons';
-import Button from './Button';
-import Text from './Text';
 
 function Card({ width , children }) {
   return (
-    <CardArea width={width} margin={'0px 44px 56px 0px'} padding={'20px'}>
+    <CardArea width={width} padding={'20px'}>
       <CardPhoto>
         <img
           alt='갤럭시 Z 폴드 3 5G'
@@ -17,7 +15,7 @@ function Card({ width , children }) {
         <CardTitle>갤럭시 Z 폴드 3 5G</CardTitle>
         <Location>경기도 고양시 일산서구 주엽동</Location>
         <CardPrice>400,000원</CardPrice>
-        <CardCounts>
+          <CardCounts>
           <span>
             <HeartOutlined />
             &nbsp; 21
@@ -27,18 +25,6 @@ function Card({ width , children }) {
             &nbsp; 5
           </span>
         </CardCounts>
-        <Buttons>
-          <Button width={'55%'} height={'30px'} outlinecolor={'#9e7979'} bc={'white'} linewidth={'2px'}>
-            <Text fontSize={'15px'} color={'#9e7979'} fontWeight={'bold'}>
-              거래완료
-            </Text>
-          </Button>
-          <Button bc={'#9e7979'} width={'40%'} height={'30px'}>
-            <Text fontSize={'15px'} color={'white'} fontWeight={'bold'}>
-              삭제
-            </Text>
-          </Button>
-        </Buttons>
         {children}
       </CardDesc>
     </CardArea>
@@ -54,7 +40,7 @@ const CardArea = styled.div`
   margin: ${({ margin }) => `${margin}`};
   padding: ${({ padding }) => padding};
   border-radius: 12px;
-  background-color: #fff;
+  background-color:white;
   box-shadow: 1px 1px 7px 1px rgba(190, 180, 125, 0.26);
 `;
 
@@ -119,3 +105,4 @@ const CardCounts = styled.div`
   justify-content: space-between;
   font-size: 13px;
 `;
+
