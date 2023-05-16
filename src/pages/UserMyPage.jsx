@@ -4,8 +4,15 @@ import styled from 'styled-components';
 import Layout from '../components/common/Layout';
 import Text from '../components/common/Text';
 import Button from '../components/common/Button';
+import { useNavigate } from 'react-router-dom';
 
 function UserMyPage() {
+  const navigate = useNavigate();
+
+  const goUpload = () => {
+    navigate('/uploads');
+  };
+
   return (
     <Layout>
       <PostTitle>나의 거래</PostTitle>
@@ -17,7 +24,7 @@ function UserMyPage() {
           position: 'relative',
           right: '15%',
         }}>
-        <Button width={'10%'} height={'45px'} bc={'#9e7979'}>
+        <Button width={'10%'} height={'45px'} bc={'#9e7979'} onClick={goUpload}>
           <Text fontSize={'25px'} fontWeight={'bold'} color={'#ffffff'}>
             글쓰기
           </Text>
@@ -27,9 +34,9 @@ function UserMyPage() {
       <CardList>
         <div style={{display:'flex',justifyContent: 'space-between',alignItems: 'center'}}>
           <Title>관심목록</Title>
-          <Button style={{display:'flex',}}>
+          {/* <Button style={{display:'flex',}}>
             <Title style={{fontSize:'17px'}}>더보기 ▶︎</Title>
-          </Button>
+          </Button> */}
           
         </div>
         <Cards>
@@ -44,9 +51,9 @@ function UserMyPage() {
       <CardList>
         <div style={{display:'flex',justifyContent: 'space-between',alignItems: 'center'}}>
           <Title>판매중</Title>
-          <Button>
+          {/* <Button>
             <Title style={{fontSize:'17px' }}>더보기 ▶︎</Title>
-          </Button>
+          </Button> */}
           
         </div>
 
@@ -101,9 +108,9 @@ function UserMyPage() {
       <CardList>
         <div style={{display:'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <Title>거래 완료</Title>
-          <Button >
+          {/* <Button >
             <Title style={{fontSize:'17px'}}>더보기 ▶︎</Title>
-          </Button>
+          </Button> */}
         </div>
         <Cards>
           <Card />
@@ -112,6 +119,7 @@ function UserMyPage() {
           <Card />
         </Cards>
       </CardList>
+
     </Layout>
   );
 }
