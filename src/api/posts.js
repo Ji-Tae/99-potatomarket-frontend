@@ -25,21 +25,21 @@ const allGoodsGet = async () => {
 //인기 매물
 const bestGoodsGet = async () => {
   const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts/best`);
-  return response;
+  return response.data;
 };
 
 
 
 // 게시글 상세 조회
-// const getGoodsDetail = async () => {
-//   const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts/:post_id`, { withCredentials: true });
-//   return response.data;
-// };
+const getGoodsDetail = async () => {
+  const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts/2`);
+  return response.data;
+};
 
 // const getGoodsDetail = async () => {
 //   const response = await axios.get("http://13.209.35.164:3000//api/posts/2");
 //   return response;
 // };
 
-export { uploadPost, allGoodsGet, bestGoodsGet };
+export { uploadPost, allGoodsGet, bestGoodsGet, getGoodsDetail };
 

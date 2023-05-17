@@ -8,39 +8,65 @@ import InputBox from '../components/common/InputBox';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { getGoodsDetail } from '../api/posts';
+import { useQuery } from 'react-query';
 
 function GoodsDetail() {
-  const [nickname, setNickname] = useState('');
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [photo_url, setPhoto_url] = useState('');
-  const [likes, setLikes] = useState(0);
-  const [views, setViews] = useState(0);
-  const [price, setPrice] = useState(0);
-  const [location, setLocation] = useState('');
+  const { isLoading, isError, data } = useQuery("goodsdetail",getGoodsDetail );
 
-  const { post_id } = useParams();
+  if (isLoading) {
+    return <p>로딩중입니다....!</p>;
+  }
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await axios.get(`http://13.209.35.164:3000/api/posts/${post_id}`);
-        if (response.status === 200) {
-          setNickname(response.data.data.nickname);
-          setTitle(response.data.data.title);
-          setContent(response.data.data.content);
-          setPhoto_url(response.data.data.photo_url);
-          setLikes(response.data.data.likes);
-          setViews(response.data.data.views);
-          setPrice(response.data.data.price);
-          setLocation(response.data.data.location);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    fetchData();
-  }, [post_id]);
+  if (isError) {
+    return <p>오류가 발생하였습니다...!</p>;
+  }
+
+  
+  // const [nickname, setNickname] = useState('');
+  // const [title, setTitle] = useState('');
+  // const [content, setContent] = useState('');
+  // const [photo_url, setPhoto_url] = useState('');
+  // const [likes, setLikes] = useState(0);
+  // const [views, setViews] = useState(0);
+  // const [price, setPrice] = useState(0);
+  // const [location, setLocation] = useState('');
+
+  // const { post_id } = useParams();
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const response = await axios.get(`http://13.209.35.164:3000/api/posts/${post_id}`);
+  //       if (response.status === 200) {
+  //         setNickname(response.data.data.nickname);
+  //         setTitle(response.data.data.title);
+  //         setContent(response.data.data.content);
+  //         setPhoto_url(response.data.data.photo_url);
+  //         setLikes(response.data.data.likes);
+  //         setViews(response.data.data.views);
+  //         setPrice(response.data.data.price);
+  //         setLocation(response.data.data.location);
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  //   fetchData();
+  // }, [post_id]);
+
+  // const { isLoading, isError, data } = useQuery("usedgoods", allGoodsGet);
+
+  // if (isLoading) {
+  //   return <p>로딩중입니다....!</p>;
+  // }
+
+  // if (isError) {
+  //   return <p>오류가 발생하였습니다...!</p>;
+  // }
+
+  const { nickname, title, content, photo_url, likes, views, price, location } = data.data;
+
 
   return (
     <Layout>
@@ -50,8 +76,9 @@ function GoodsDetail() {
             ◀︎ 뒤로가기
           </Text>
         </Button>
+        <div></div>
         <CardPhoto>
-          <img alt='갤럭시 Z 폴드 3 5G' src={photo_url} />
+          <img alt='' src={photo_url}/>
         </CardPhoto>
         <UserDesc>
           <Text fontSize={'22px'} fontWeight={'bold'}>
@@ -80,7 +107,7 @@ function GoodsDetail() {
               </span>
               <span style={{ marginRight: '15px' }}>
                 <MessageOutlined />
-                &nbsp; 5
+                &nbsp; 0
               </span>
               <span style={{ marginRight: '15px' }}>
                 <EyeOutlined />
@@ -146,6 +173,11 @@ const CardPhoto = styled.div`
   justify-content: center;
   align-items: center;
   margin: auto;
+  img{
+    object-fit: fill;
+width : 100%;
+height: 100%;
+}
   /* background-color:aqua; */
 `;
 const UserDesc = styled.div`
