@@ -2,17 +2,28 @@ import React from 'react';
 import Layout from '../components/common/Layout';
 import styled from 'styled-components';
 import Card from '../components/common/Card';
+import { useQuery } from 'react-query';
+import { bestGoodsGet } from '../api/posts';
 
 function BestUsedGoods() {
+
+  const { isLoading, isError, data } = useQuery("bestgoods", bestGoodsGet);
+console.log(data?.data)
+  if (isLoading) {
+    return <p>로딩중입니다....!</p>;
+  }
+
+  if (isError) {
+    return <p>오류가 발생하였습니다...!</p>;
+  }
   return (
     <Layout>
       <PostTitle>인기 매물</PostTitle>
       <CardList>
         <Cards>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {data?.data[0].map((card) => {
+            return <Card key={card.post_id} card={card}/>
+          })}
         </Cards>
       </CardList>
     </Layout>
@@ -43,3 +54,4 @@ const Cards = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
+

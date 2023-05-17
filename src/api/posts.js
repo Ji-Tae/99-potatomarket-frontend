@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 const uploadPost = async (formData) => {
   const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/posts`, formData, {
     headers: {
@@ -10,6 +11,13 @@ const uploadPost = async (formData) => {
   });
   return response;
 };
+
+//인기 매물
+const bestGoodsGet = async () => {
+  const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts/best`);
+  console.log('bestgoods',response.data)
+  return response;
+}
 
 const allGoodsGet = async () => {
   const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts`);
@@ -26,4 +34,6 @@ const allGoodsGet = async () => {
 //   return response;
 // };
 
-export { uploadPost, allGoodsGet };
+
+export{uploadPost, allGoodsGet, bestGoodsGet};
+

@@ -3,7 +3,6 @@ import { styled } from 'styled-components';
 import { HeartOutlined, HeartFilled, MessageOutlined } from '@ant-design/icons';
 
 function Card({ width, children, height, card }) {
-  console.log(card);
   return (
     <CardArea width={width} padding={'20px'} height={height}>
       <CardPhoto>
@@ -60,6 +59,9 @@ const CardPhoto = styled.div`
     box-sizing: border-box;
     border-radius: 12px;
     border: 1px solid transparent;
+    /* object-fit: fill; */
+    /* width: 100%; */
+    height: 100%;
   }
 `;
 

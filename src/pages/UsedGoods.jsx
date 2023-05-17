@@ -6,23 +6,27 @@ import { useQuery } from 'react-query';
 import { allGoodsGet } from '../api/posts';
 
 function UsedGoods() {
-  const { isLoading, isError, data } = useQuery('usedgoods', allGoodsGet);
+  const { isLoading, isError, data } = useQuery("usedgoods", allGoodsGet);
+
   if (isLoading) {
-    return <h3>사진 가져오는 중 입니다....</h3>;
+    return <p>로딩중입니다....!</p>;
   }
 
   if (isError) {
-    return <h3>오류가 발생하였습니다....</h3>;
+    return <p>오류가 발생하였습니다...!</p>;
   }
+  
   return (
     <Layout>
       <PostTitle>중고 매물</PostTitle>
       <CardList>
         <Cards>
+
           {data?.map((card) => {
             return <Card key={card.post_id} card={card} />;
           })}
           <Card />
+
         </Cards>
       </CardList>
     </Layout>
@@ -38,12 +42,15 @@ const PostTitle = styled.div`
   font-weight: bold;
   color: rgba(190, 180, 125, 1);
   padding: 70px;
-`;
+`; 
+
 const CardList = styled.div`
   width: 100%;
   margin: 50px 0px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
 `;
 
 const Cards = styled.div`
@@ -51,3 +58,4 @@ const Cards = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
+
