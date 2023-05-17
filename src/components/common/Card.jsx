@@ -2,24 +2,21 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { HeartOutlined, HeartFilled, MessageOutlined } from '@ant-design/icons';
 
-function Card({ width, children, height }) {
+function Card({ width, children, height, card }) {
+  console.log(card);
   return (
-    <CardArea width={width} padding={'20px'}>
-
+    <CardArea width={width} padding={'20px'} height={height}>
       <CardPhoto>
-        <img
-          alt='갤럭시 Z 폴드 3 5G'
-          src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEkvUeuk0KkCuS7JtUDjekOuOjaV0DHYAl4A&usqp=CAU'
-        />
+        <img alt='갤럭시 Z 폴드 3 5G' src={card?.photo_url} />
       </CardPhoto>
       <CardDesc>
-        <CardTitle>갤럭시 Z 폴드 3 5G</CardTitle>
-        <Location>경기도 고양시 일산서구 주엽동</Location>
-        <CardPrice>400,000원</CardPrice>
-          <CardCounts>
+        <CardTitle>{card?.title}</CardTitle>
+        <Location>{card?.content}</Location>
+        <CardPrice>{card?.price}원</CardPrice>
+        <CardCounts>
           <span>
             <HeartOutlined />
-            &nbsp; 21
+            &nbsp; {card?.likes}
           </span>
           <span>
             <MessageOutlined />
@@ -36,13 +33,13 @@ export default Card;
 
 export const CardArea = styled.div`
   width: ${({ width }) => {
-    return width ? `${width}px` : '25%';
+    return width ? `${width}px` : '180px';
   }};
   margin: ${({ margin }) => `${margin}`};
   padding: ${({ padding }) => padding};
   height: ${({ height }) => height};
   border-radius: 12px;
-  background-color:white;
+  background-color: white;
   box-shadow: 1px 1px 7px 1px rgba(190, 180, 125, 0.26);
 `;
 
@@ -107,4 +104,3 @@ const CardCounts = styled.div`
   justify-content: space-between;
   font-size: 13px;
 `;
-

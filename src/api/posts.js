@@ -1,18 +1,20 @@
-import axios from "axios"
+import axios from 'axios';
 
-const uploadPost = async(formData) => {
-  const response = await axios.post(
-    `${process.env.REAT_APP_SERVER_URL}/api/posts`,formData,{
-      headers:{
-        "Content-Type": 'multipart/form-data',
-        Authorization: `Bearer`,
-        refreshToken : `Bearer`
-      }
-    }
-  ) 
-  return response
-} 
+const uploadPost = async (formData) => {
+  const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/posts`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer`,
+      refreshToken: `Bearer`,
+    },
+  });
+  return response;
+};
 
+const allGoodsGet = async () => {
+  const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts`);
+  return response.data;
+};
 // 게시글 상세 조회
 // const getGoodsDetail = async () => {
 //   const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts/:post_id`, { withCredentials: true });
@@ -24,5 +26,4 @@ const uploadPost = async(formData) => {
 //   return response;
 // };
 
-export{uploadPost};
-
+export { uploadPost, allGoodsGet };
