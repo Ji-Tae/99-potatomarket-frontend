@@ -22,48 +22,7 @@ function GoodsDetail() {
     return <p>오류가 발생하였습니다...!</p>;
   }
 
-  
-  // const [nickname, setNickname] = useState('');
-  // const [title, setTitle] = useState('');
-  // const [content, setContent] = useState('');
-  // const [photo_url, setPhoto_url] = useState('');
-  // const [likes, setLikes] = useState(0);
-  // const [views, setViews] = useState(0);
-  // const [price, setPrice] = useState(0);
-  // const [location, setLocation] = useState('');
 
-  // const { post_id } = useParams();
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const response = await axios.get(`http://13.209.35.164:3000/api/posts/${post_id}`);
-  //       if (response.status === 200) {
-  //         setNickname(response.data.data.nickname);
-  //         setTitle(response.data.data.title);
-  //         setContent(response.data.data.content);
-  //         setPhoto_url(response.data.data.photo_url);
-  //         setLikes(response.data.data.likes);
-  //         setViews(response.data.data.views);
-  //         setPrice(response.data.data.price);
-  //         setLocation(response.data.data.location);
-  //       }
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  //   fetchData();
-  // }, [post_id]);
-
-  // const { isLoading, isError, data } = useQuery("usedgoods", allGoodsGet);
-
-  // if (isLoading) {
-  //   return <p>로딩중입니다....!</p>;
-  // }
-
-  // if (isError) {
-  //   return <p>오류가 발생하였습니다...!</p>;
-  // }
 
   const { nickname, title, content, photo_url, likes, views, price, location } = data.data;
 

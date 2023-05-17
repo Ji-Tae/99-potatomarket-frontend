@@ -20,7 +20,7 @@ function BestUsedGoods() {
       <PostTitle>인기 매물</PostTitle>
       <CardList>
         <Cards>
-          {data?.data[0].map((card) => {
+          {data?.map((card) => {
             return <Card key={card.post_id} card={card} />;
           })}
         </Cards>
