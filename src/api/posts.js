@@ -1,20 +1,19 @@
-import axios from "axios";
-import Cookies from "js-cookie";
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
-const accessToken = Cookies.get('accessToken')
-const refreshToken = Cookies.get('refreshToken')
+const accessToken = Cookies.get('accessToken');
+const refreshToken = Cookies.get('refreshToken');
 
-const uploadPost = async(formData) => {
-  const response = await axios.post(
-    `${process.env.REACT_APP_SERVER_URL}/api/posts`,formData,{
-      headers:{
-        "Content-Type": 'multipart/form-data',
-        Authorization: `Bearer ${accessToken}`,
-        refreshToken : `Bearer ${refreshToken}`
-      }
-    }
-  ) 
-  return response
+const uploadPost = async (formData) => {
+  const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/posts`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      accessToken: `Bearer ${accessToken}`,
+      refreshToken: `Bearer  ${refreshToken}`,
+    },
+  });
+  console.log(response);
+  return response.data;
 };
 //중고 매물
 const allGoodsGet = async () => {
@@ -26,9 +25,8 @@ const allGoodsGet = async () => {
 //인기 매물
 const bestGoodsGet = async () => {
   const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts/best`);
-  console.log('bestgoods',response.data)
   return response;
-}
+};
 
 
 
@@ -43,5 +41,5 @@ const bestGoodsGet = async () => {
 //   return response;
 // };
 
-export{uploadPost, allGoodsGet, bestGoodsGet};
+export { uploadPost, allGoodsGet, bestGoodsGet };
 
