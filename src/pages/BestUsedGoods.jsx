@@ -6,9 +6,8 @@ import { useQuery } from 'react-query';
 import { bestGoodsGet } from '../api/posts';
 
 function BestUsedGoods() {
+  const { isLoading, isError, data } = useQuery('bestgoods', bestGoodsGet);
 
-  const { isLoading, isError, data } = useQuery("bestgoods", bestGoodsGet);
-console.log(data?.data)
   if (isLoading) {
     return <p>로딩중입니다....!</p>;
   }
@@ -22,7 +21,7 @@ console.log(data?.data)
       <CardList>
         <Cards>
           {data?.data[0].map((card) => {
-            return <Card key={card.post_id} card={card}/>
+            return <Card key={card.post_id} card={card} />;
           })}
         </Cards>
       </CardList>
@@ -54,4 +53,3 @@ const Cards = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-

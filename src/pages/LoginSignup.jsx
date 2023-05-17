@@ -88,7 +88,6 @@ function LoginSignup() {
       goHome();
     },
     onError: (error) => {
-      console.log(error.response.data.errorMessage);
       alert(error.response.data.errorMessage);
     },
   });
@@ -115,7 +114,7 @@ function LoginSignup() {
   return (
     <Layout>
       <Container>
-        <CardArea height={'900px'}>
+        <CardArea height={'900px'} width={350}>
           <form onSubmit={loginHandleSubmit}>
             <CardDesc>
               <Text fontSize={'40px'} margin={'15px 0 0 0'}>
@@ -156,7 +155,7 @@ function LoginSignup() {
           </form>
         </CardArea>
 
-        <CardArea height={'900px'}>
+        <CardArea height={'900px'} width={350}>
           <form onSubmit={signupHandleSubmit}>
             <CardDesc>
               <Text fontSize={'40px'} margin={'15px 0 0 0'}>

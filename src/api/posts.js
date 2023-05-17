@@ -1,23 +1,26 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
+const accessToken = Cookies.get('accessToken');
+const refreshToken = Cookies.get('refreshToken');
 
 const uploadPost = async (formData) => {
   const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/posts`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
-      Authorization: `Bearer`,
-      refreshToken: `Bearer`,
+      accessToken: `Bearer ${accessToken}`,
+      refreshToken: `Bearer  ${refreshToken}`,
     },
   });
-  return response;
+  console.log(response);
+  return response.data;
 };
 
 //인기 매물
 const bestGoodsGet = async () => {
   const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts/best`);
-  console.log('bestgoods',response.data)
   return response;
-}
+};
 
 const allGoodsGet = async () => {
   const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts`);
@@ -34,6 +37,4 @@ const allGoodsGet = async () => {
 //   return response;
 // };
 
-
-export{uploadPost, allGoodsGet, bestGoodsGet};
-
+export { uploadPost, allGoodsGet, bestGoodsGet };
