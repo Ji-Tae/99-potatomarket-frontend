@@ -18,6 +18,7 @@ function InputBox(props) {
     type,
     pattern,
     required,
+    accept,
     id,
   } = props;
   return (
@@ -35,6 +36,7 @@ function InputBox(props) {
       type={type}
       pattern={pattern}
       required={required}
+      accept={accept}
       id={id}
     />
   );

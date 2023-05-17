@@ -5,8 +5,48 @@ import Text from '../components/common/Text';
 import { styled } from 'styled-components';
 import { HeartOutlined, HeartFilled, MessageOutlined, EyeOutlined } from '@ant-design/icons';
 import InputBox from '../components/common/InputBox';
+import { useState,useEffect } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+
 
 function GoodsDetail() {
+
+  const [nickname, setNickname] = useState('')
+  const [title, setTitle] = useState('')
+  const [content,setContent] = useState('')
+  const [photo_url,setPhoto_url] = useState('')
+  const [likes,setLikes] = useState(0)
+  const [views,setViews] = useState(0)
+  const [price,setPrice] = useState(0)
+  const [location,setLocation] = useState('')
+ 
+  const {post_id} = useParams();
+  
+  useEffect(() => {
+    async function fetchData() {
+        try {
+            const response = await axios.get(
+                `http://13.209.35.164:3000/api/posts/${post_id}`
+            );  
+            if (response.status === 200) {
+                
+                setNickname(response.data.data.nickname)
+                setTitle(response.data.data.title)
+                setContent(response.data.data.content)
+                setPhoto_url(response.data.data.photo_url)
+                setLikes(response.data.data.likes)
+                setViews(response.data.data.views)
+                setPrice(response.data.data.price)
+                setLocation(response.data.data.location) 
+            } 
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    fetchData();
+}, [post_id]);
+  
   return (
     <Layout>
       <Container>
@@ -16,23 +56,23 @@ function GoodsDetail() {
         <CardPhoto>
           <img
             alt='갤럭시 Z 폴드 3 5G'
-            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEkvUeuk0KkCuS7JtUDjekOuOjaV0DHYAl4A&usqp=CAU'
+            src={photo_url}
           />
         </CardPhoto>
         <UserDesc>
-          <Text fontSize={'22px'} fontWeight={'bold'} >닉네임</Text>
-          <Text fontSize={'17px'} fontWeight={'bold'} color={'#636363'}>부평 1동</Text>
+          <Text fontSize={'22px'} fontWeight={'bold'} >{nickname}</Text>
+          <Text fontSize={'17px'} fontWeight={'bold'} color={'#636363'}>{location}</Text>
           <hr />
         </UserDesc>
         <div style={{ display: "flex", flexDirection: "column", }}>
           <GoodsDesc>
-            <Text fontSize={'25px'} fontWeight={'bold'} >테이블이랑 의자 2개 팔아요</Text>
-            <Text fontSize={'20px'} fontWeight={'bold'} color={'#434343'}>30,000원</Text>
-            <Text fontSize={'20px'} fontWeight={'regular'} color={'#434343'} >구매한지 3개월 되었습니다. 무인카페에서 사용하였습니다.</Text>
+            <Text fontSize={'25px'} fontWeight={'bold'} >{title}</Text>
+            <Text fontSize={'20px'} fontWeight={'bold'} color={'#434343'}>{price} 원</Text>
+            <Text fontSize={'20px'} fontWeight={'regular'} color={'#434343'} >{content}</Text>
             <GoodsCounts>
               <span style={{ marginRight: "15px" }}>
                 <HeartOutlined />
-                &nbsp; 21
+                &nbsp; {likes}
               </span>
               <span style={{ marginRight: "15px" }}>
                 <MessageOutlined />
@@ -40,7 +80,7 @@ function GoodsDetail() {
               </span>
               <span style={{ marginRight: "15px" }}>
                 <EyeOutlined />
-                &nbsp; 120
+                &nbsp; {views}
               </span>
             </GoodsCounts>
           </GoodsDesc>
@@ -87,7 +127,7 @@ width: 70%;
 display: flex;
 flex-direction: column;
 margin: auto;
-padding: 70px;
+padding: 20px;
 `
 const CardPhoto = styled.div`
 width: 60%;
@@ -96,8 +136,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 margin: auto;
-background-color:aqua;
-
+/* background-color:aqua; */
 `
 const UserDesc = styled.div`
 margin-top: 20px;
