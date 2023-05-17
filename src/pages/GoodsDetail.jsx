@@ -1,31 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../components/common/Layout';
 import Button from '../components/common/Button';
 import Text from '../components/common/Text';
 import { styled } from 'styled-components';
 import { HeartOutlined, HeartFilled, MessageOutlined, EyeOutlined } from '@ant-design/icons';
 import InputBox from '../components/common/InputBox';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { getGoodsDetail } from '../api/posts';
-import { useQuery } from 'react-query';
+import { useMutation } from 'react-query';
 
 function GoodsDetail() {
-  const { isLoading, isError, data } = useQuery("goodsdetail",getGoodsDetail );
+  const { post_id } = useParams();
 
-  if (isLoading) {
-    return <p>로딩중입니다....!</p>;
-  }
-
-  if (isError) {
-    return <p>오류가 발생하였습니다...!</p>;
-  }
-
-
-
-  const { nickname, title, content, photo_url, likes, views, price, location } = data.data;
-
+  const [details, setDetails] = useState(null);
+  const detailsMutation = useMutation(getGoodsDetail, {
+    onSuccess: (response) => {
+      setDetails(response.data);
+    },
+  });
+  useEffect(() => {
+    detailsMutation.mutate(post_id);
+  }, []);
 
   return (
     <Layout>
@@ -37,32 +32,32 @@ function GoodsDetail() {
         </Button>
         <div></div>
         <CardPhoto>
-          <img alt='' src={photo_url}/>
+          <img alt='' src={details?.photo_url} />
         </CardPhoto>
         <UserDesc>
           <Text fontSize={'22px'} fontWeight={'bold'}>
-            {nickname}
+            {details?.nickname}
           </Text>
           <Text fontSize={'17px'} fontWeight={'bold'} color={'#636363'}>
-            {location}
+            {details?.location}
           </Text>
           <hr />
         </UserDesc>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <GoodsDesc>
             <Text fontSize={'25px'} fontWeight={'bold'}>
-              {title}
+              {details?.title}
             </Text>
             <Text fontSize={'20px'} fontWeight={'bold'} color={'#434343'}>
-              {price} 원
+              {details?.price} 원
             </Text>
             <Text fontSize={'20px'} fontWeight={'regular'} color={'#434343'}>
-              {content}
+              {details?.content}
             </Text>
             <GoodsCounts>
               <span style={{ marginRight: '15px' }}>
                 <HeartOutlined />
-                &nbsp; {likes}
+                &nbsp; {details?.likes}
               </span>
               <span style={{ marginRight: '15px' }}>
                 <MessageOutlined />
@@ -70,7 +65,7 @@ function GoodsDetail() {
               </span>
               <span style={{ marginRight: '15px' }}>
                 <EyeOutlined />
-                &nbsp; {views}
+                &nbsp; {details?.views}
               </span>
             </GoodsCounts>
           </GoodsDesc>
@@ -132,11 +127,11 @@ const CardPhoto = styled.div`
   justify-content: center;
   align-items: center;
   margin: auto;
-  img{
+  img {
     object-fit: fill;
-width : 100%;
-height: 100%;
-}
+    width: 100%;
+    height: 100%;
+  }
   /* background-color:aqua; */
 `;
 const UserDesc = styled.div`
