@@ -18,7 +18,8 @@ function InputBox(props) {
     type,
     pattern,
     required,
-    accept
+    accept,
+    id,
   } = props;
   return (
     <InputStyled
@@ -36,6 +37,7 @@ function InputBox(props) {
       pattern={pattern}
       required={required}
       accept={accept}
+      id={id}
     />
   );
 }

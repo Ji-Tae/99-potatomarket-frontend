@@ -25,3 +25,4 @@ const uploadPost = async(formData) => {
 // };
 
 export{uploadPost};
+
