@@ -28,10 +28,9 @@ const allGoodsGet = async () => {
 
 // 게시글 상세 조회
 const getGoodsDetail = async () => {
-  const response = await axios.get(`/api/posts/2`);
+  const response = await api.get(`/api/posts/2`);
   return response.data;
 };
 
 
 export { uploadPost, allGoodsGet, bestGoodsGet, getGoodsDetail };
-
