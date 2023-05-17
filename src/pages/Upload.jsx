@@ -22,23 +22,13 @@ function Upload() {
   //이미지 파일 관리
   const [previewUrl, setPreviewUrl] = useState(null);
 
-  const photoChange = (e) => {
-    const file = e.target.files[0];
-    setPhoto(file);
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      setPreviewUrl(reader.result);
-    };
-    reader.readAsDataURL(file);
-  };
-
   const uploadMutation = useMutation(uploadPost, {
-    onSuccess: () => {
+    onSuccess: (data) => {
       alert('업로드에 성공하셨습니다.')
     }
   })
 
+//폼 제출 처리
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -50,7 +40,8 @@ function Upload() {
 
     uploadMutation.mutate(formData);
   }
-
+  console.log(previewUrl)
+  //드래그 영역
   function handleDragEnter(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -77,14 +68,14 @@ function Upload() {
     handleFiles(files);
   }
 
-  function handleFileSelect(e) {
-    const files = Array.from(e.target.files);
-    handleFiles(files);
-  }
+  // function handleFileSelect(e) {
+  //   const files = Array.from(e.target.files);
+  //   handleFiles(files);
+  // }
 
   function handleFiles(files) {
-    const updatedFiles = [...fileList, ...files];
-    setPhoto(updatedFiles);
+    // const updatedFiles = [...fileList, ...files];
+    // setPhoto(updatedFiles);
 
     files.forEach((file) => {
       const reader = new FileReader();
@@ -118,13 +109,13 @@ function Upload() {
               {previewUrl && <img src={previewUrl} alt="미리보기 이미지" className="preview" style={{ display: "block", position: "absolute", left: 0, height: 0, width: "100%", height: "100%" }} />}
             </div>
 
-            <input
+            {/* <input
               className="file"
               id="chooseFile"
               type="file"
               onChange={handleFileSelect}
               accept="image/png, image/jpeg, image/gif"
-              style={{ display: "none" }} />
+              style={{ display: "none" }} /> */}
           </div>
         </div>
 

@@ -60,7 +60,6 @@ const CardPhoto = styled.div`
     border-radius: 12px;
     border: 1px solid transparent;
     /* object-fit: fill; */
-    /* width: 100%; */
     height: 100%;
   }
 `;
