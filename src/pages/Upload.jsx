@@ -20,6 +20,7 @@ function Upload() {
 
   //이미지 파일 관리
   const [previewUrl, setPreviewUrl] = useState(null);
+
   //console.log(previewUrl);
 
   const uploadMutation = useMutation(uploadPost, {
@@ -31,6 +32,8 @@ function Upload() {
     },
   });
 
+
+//폼 제출 처리
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -129,6 +132,7 @@ function Upload() {
                 />
               )}
             </div>
+
           </div>
         </div>
 
