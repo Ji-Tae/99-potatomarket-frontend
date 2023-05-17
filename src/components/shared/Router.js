@@ -21,7 +21,7 @@ function Router() {
         <Route path='/bestusedgoods' element={<BestUsedGoods />} />
         <Route path='/usermypages' element={<UserMyPage />} />
         <Route path='/uploads' element={<Upload />} />
-        <Route path='/goodsdetails' element={<GoodsDetail />} />
+        <Route path='/goodsdetails/:post_id' element={<GoodsDetail />} />
       </Routes>
       <Footer />
     </BrowserRouter>

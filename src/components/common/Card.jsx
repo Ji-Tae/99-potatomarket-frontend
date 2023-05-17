@@ -1,10 +1,19 @@
 import React from 'react';
 import { styled } from 'styled-components';
 import { HeartOutlined, HeartFilled, MessageOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 function Card({ width, children, height, card }) {
+  console.log(`card=>${card}`);
+  const navigate = useNavigate();
+  const goGoodsDetail = () => {
+    navigate(`/goodsdetails/${card.post_id}`, {
+      state: card,
+    });
+  };
+
   return (
-    <CardArea width={width} padding={'20px'} height={height}>
+    <CardArea width={width} padding={'20px'} height={height} onClick={goGoodsDetail}>
       <CardPhoto>
         <img alt='갤럭시 Z 폴드 3 5G' src={card?.photo_url} />
       </CardPhoto>
@@ -40,6 +49,7 @@ export const CardArea = styled.div`
   border-radius: 12px;
   background-color: white;
   box-shadow: 1px 1px 7px 1px rgba(190, 180, 125, 0.26);
+  cursor: pointer;
 `;
 
 const CardPhoto = styled.div`
