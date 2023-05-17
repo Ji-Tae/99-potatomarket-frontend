@@ -2,7 +2,7 @@ import axios from "axios"
 
 const uploadPost = async(formData) => {
   const response = await axios.post(
-    `${process.env.REAT_APP_SERVER_URL}/api/posts`,formData,{
+    `${process.env.REACT_APP_SERVER_URL}/api/posts`,formData,{
       headers:{
         "Content-Type": 'multipart/form-data',
         Authorization: `Bearer`,
@@ -11,7 +11,21 @@ const uploadPost = async(formData) => {
     }
   ) 
   return response
-} 
+};
+//중고 매물
+const allGoodsGet = async () => {
+  const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts`);
+  console.log('allgoods',response)
+  return response.data;
+}
+
+//인기 매물
+const bestGoodsGet = async () => {
+  const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts/best`);
+  console.log('bestgoods',response.data)
+  return response;
+}
+
 
 // 게시글 상세 조회
 // const getGoodsDetail = async () => {
@@ -24,5 +38,5 @@ const uploadPost = async(formData) => {
 //   return response;
 // };
 
-export{uploadPost};
+export{uploadPost, allGoodsGet, bestGoodsGet};
 
