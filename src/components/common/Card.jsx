@@ -4,19 +4,15 @@ import { HeartOutlined, HeartFilled, MessageOutlined } from '@ant-design/icons';
 
 function Card({ width, children, height, card }) {
   return (
-    <CardArea width={width} padding={'20px'}>
-
+    <CardArea width={width} padding={'20px'} height={height}>
       <CardPhoto>
-        <img
-          alt='갤럭시 Z 폴드 3 5G'
-          src={card?.photo_url}
-        />
+        <img alt='갤럭시 Z 폴드 3 5G' src={card?.photo_url} />
       </CardPhoto>
       <CardDesc>
         <CardTitle>{card?.title}</CardTitle>
-        <Location>경기도 고양시 일산서구 주엽동</Location>
+        <Location>{card?.content}</Location>
         <CardPrice>{card?.price}원</CardPrice>
-          <CardCounts>
+        <CardCounts>
           <span>
             <HeartOutlined />
             &nbsp; {card?.likes}
@@ -42,7 +38,7 @@ export const CardArea = styled.div`
   padding: ${({ padding }) => padding};
   height: ${({ height }) => height};
   border-radius: 12px;
-  background-color:white;
+  background-color: white;
   box-shadow: 1px 1px 7px 1px rgba(190, 180, 125, 0.26);
 `;
 
@@ -110,4 +106,3 @@ const CardCounts = styled.div`
   justify-content: space-between;
   font-size: 13px;
 `;
-

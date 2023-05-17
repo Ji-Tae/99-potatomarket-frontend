@@ -103,10 +103,12 @@ function LoginSignup() {
       location: signupLocation,
       introduction: signupItro,
     };
+
+    //비밀번호와 비밀번호 확인 검증
     if (signupPw === signupConfirmPw) {
       signupMutation.mutate(newUser);
     } else {
-      alert('비밀번호 확인이 틀립니다.');
+      alert('비밀번호 확인이 비밀번호와 다릅니다.');
     }
   };
 
