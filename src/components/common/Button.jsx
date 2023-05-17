@@ -9,7 +9,7 @@ function Button(props) {
   //linewidth: 선의 굵기입니다.
   //color: 글씨 색입니다.
   //상위 폴더의 버튼 props에 linewidth가 없다면 외각선이 보이지 않습니다.
-  const { children, bc, width, height, outlinecolor, linewidth, onClick, margin, shadow } = props;
+  const { children, bc, width, height, outlinecolor, linewidth, onClick, margin, shadow, type } = props;
 
   return (
     <ButtonStyled
@@ -20,7 +20,8 @@ function Button(props) {
       outlinecolor={outlinecolor}
       linewidth={linewidth}
       shadow={shadow}
-      onClick={onClick}>
+      onClick={onClick}
+      type={type}>
       {children}
     </ButtonStyled>
   );

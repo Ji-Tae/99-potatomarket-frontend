@@ -7,8 +7,16 @@ import InputBox from '../components/common/InputBox';
 import useInput from '../hooks/useInput';
 import { useMutation } from 'react-query';
 import { uploadPost } from '../api/posts';
+import { useNavigate } from 'react-router-dom';
 
 function Upload() {
+  //요청 성공시 뒤로 가기
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
+  
   // 텍스트 관리
   const [title, titleHandler] = useInput();
   const [price, priceHandler] = useInput();
@@ -21,11 +29,10 @@ function Upload() {
   //이미지 파일 관리
   const [previewUrl, setPreviewUrl] = useState(null);
 
-  //console.log(previewUrl);
-
   const uploadMutation = useMutation(uploadPost, {
     onSuccess: (data) => {
       alert(data.message);
+      goBack();
     },
     onError: (error) => {
       alert(error.response.data.errorMessage);
@@ -148,6 +155,7 @@ function Upload() {
               shadow={'1px 1px 3px 1px #9e7979'}
               value={title}
               onChange={titleHandler}
+              required
             />
           </UploadTitle>
           <UploadPrice>
@@ -160,6 +168,7 @@ function Upload() {
               shadow={'1px 1px 3px 1px #9e7979'}
               value={price}
               onChange={priceHandler}
+              required
             />
           </UploadPrice>
           <UploadContent>
@@ -172,6 +181,7 @@ function Upload() {
               shadow={'1px 1px 3px 1px #9e7979'}
               value={content}
               onChange={contentHandler}
+              required
             />
           </UploadContent>
           <UploadLocation>
@@ -184,6 +194,7 @@ function Upload() {
               shadow={'1px 1px 3px 1px #9e7979'}
               value={location}
               onChange={locationHandler}
+              required
             />
           </UploadLocation>
           <div style={{ width: '40%', margin: 'auto' }}>
