@@ -193,7 +193,8 @@ function LoginSignup() {
                 height={'23px'}
                 bc={'#fff'}
                 shadow={'1px 1px 5px 1px #BEB47D'}
-                onClick={idValidationHandler}>
+                onClick={idValidationHandler}
+                type={'button'}>
                 <Text fontSize={'10px'}>중복 확인</Text>
               </Button>
               <InputItem margin={'20px'}>

@@ -9,7 +9,7 @@ const uploadPost = async (formData) => {
     headers: {
       'Content-Type': 'multipart/form-data',
       accessToken: `Bearer ${accessToken}`,
-      refreshToken: `Bearer  ${refreshToken}`,
+      refreshToken: `Bearer ${refreshToken}`,
     },
   });
   console.log(response);
