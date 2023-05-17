@@ -12,7 +12,6 @@ const uploadPost = async (formData) => {
       RefreshToken: `Bearer ${refreshToken}`,
     },
   });
-  console.log(response);
   return response.data;
 };
 
@@ -21,20 +20,18 @@ const bestGoodsGet = async () => {
   const response = await api.get(`/api/posts/best`);
   return response;
 };
-
+//중고 매물
 const allGoodsGet = async () => {
   const response = await api.get(`/api/posts`);
   return response.data;
 };
+
 // 게시글 상세 조회
-// const getGoodsDetail = async () => {
-//   const response = await api.get(`/api/posts/:post_id`, { withCredentials: true });
-//   return response.data;
-// };
+const getGoodsDetail = async () => {
+  const response = await axios.get(`/api/posts/2`);
+  return response.data;
+};
 
-// const getGoodsDetail = async () => {
-//   const response = await api.get(`/api/posts/2`);
-//   return response;
-// };
 
-export { uploadPost, allGoodsGet, bestGoodsGet };
+export { uploadPost, allGoodsGet, bestGoodsGet, getGoodsDetail };
+

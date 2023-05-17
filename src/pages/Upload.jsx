@@ -16,6 +16,7 @@ function Upload() {
   const goBack = () => {
     navigate(-1);
   };
+  
   // 텍스트 관리
   const [title, titleHandler] = useInput();
   const [price, priceHandler] = useInput();
@@ -38,6 +39,8 @@ function Upload() {
     },
   });
 
+
+//폼 제출 처리
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -136,6 +139,7 @@ function Upload() {
                 />
               )}
             </div>
+
           </div>
         </div>
 

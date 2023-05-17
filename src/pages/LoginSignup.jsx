@@ -154,7 +154,6 @@ function LoginSignup() {
             </CardDesc>
           </form>
         </CardArea>
-
         <CardArea height={'900px'} width={350}>
           <form onSubmit={signupHandleSubmit}>
             <CardDesc>
