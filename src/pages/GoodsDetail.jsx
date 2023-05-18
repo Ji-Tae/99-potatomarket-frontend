@@ -87,7 +87,7 @@ function GoodsDetail() {
           </GoodsDesc>
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Button width={'15%'} height={'50px'} bc={'#9e7979'} onClick={goChatHandler}>
-              <Text fontSize={'20px'} fontWeight={'bold'} color={'#ffffff'}>
+              <Text fontSize={'18px'} fontWeight={'bold'} color={'#ffffff'}>
                 거래 채팅하기
               </Text>
             </Button>
