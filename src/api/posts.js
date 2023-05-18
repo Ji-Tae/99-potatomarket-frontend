@@ -32,6 +32,27 @@ const getGoodsDetail = async (postId) => {
   return response.data;
 };
 
-//
+// 관심목록 가져오기
+const getLikeList = async (page, limit) => {
+  const response = await api.get(`/api/auth/profile/likedProducts?page=${page}&limit=${limit}`, {
+    headers: {
+      AccessToken: `Bearer ${accessToken}`,
+      RefreshToken: `Bearer ${refreshToken}`,
+    },
+  });
+  return response.data;
+};
 
-export { uploadPost, allGoodsGet, bestGoodsGet, getGoodsDetail };
+//좋아요 버튼
+const likeClickPut = async (postId) => {
+  const response = await api.put(`/api/posts/${postId}/likes`, null, {
+    headers: {
+      AccessToken: `Bearer ${accessToken}`,
+      refreshToken: `Bearer ${refreshToken}`,
+    },
+  });
+  console.log(response);
+  return response.data;
+};
+
+export { uploadPost, allGoodsGet, bestGoodsGet, getGoodsDetail, getLikeList, likeClickPut };

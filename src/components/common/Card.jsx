@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import { HeartOutlined, HeartFilled, MessageOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import { useMutation, useQueryClient } from 'react-query';
+import { likeClickPut } from '../../api/posts';
 
 function Card({ width, children, height, card }) {
+  const [like, setLike] = useState(0);
   const navigate = useNavigate();
   const goGoodsDetail = () => {
     navigate(`/goodsdetails/${card.post_id}`);
   };
 
+  const queryClient = useQueryClient();
+  const likeClickMutation = useMutation(likeClickPut, {
+    onSuccess: () => {
+      setLike(!like);
+      queryClient.invalidateQueries('bestgoods');
+      queryClient.invalidateQueries('usedgoods');
+    },
+  });
+  // 좋아요 버튼
+  const onClickLike = () => {
+    likeClickMutation.mutate(card.post_id);
+  };
   return (
-    <CardArea width={width} padding={'20px'} height={height} onClick={goGoodsDetail}>
-      <CardPhoto>
+    <CardArea width={width} padding={'20px'} height={height}>
+      <CardPhoto onClick={goGoodsDetail}>
         <img alt='갤럭시 Z 폴드 3 5G' src={card?.photo_url} />
       </CardPhoto>
       <CardDesc>
@@ -20,7 +35,11 @@ function Card({ width, children, height, card }) {
         <CardPrice>{card?.price}원</CardPrice>
         <CardCounts>
           <span>
-            <HeartOutlined />
+            {like ? (
+              <HeartFilled onClick={onClickLike} style={{ cursor: 'pointer' }} />
+            ) : (
+              <HeartOutlined onClick={onClickLike} style={{ cursor: 'pointer' }} />
+            )}
             &nbsp; {card?.likes}
           </span>
           <span>
@@ -46,7 +65,6 @@ export const CardArea = styled.div`
   border-radius: 12px;
   background-color: white;
   box-shadow: 1px 1px 7px 1px rgba(190, 180, 125, 0.26);
-  cursor: pointer;
 `;
 
 const CardPhoto = styled.div`
@@ -58,6 +76,7 @@ const CardPhoto = styled.div`
   background-color: #f8f9fa;
   box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
+  cursor: pointer;
   img {
     position: absolute;
     top: 0;

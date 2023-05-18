@@ -7,7 +7,6 @@ import { allGoodsGet } from '../api/posts';
 
 function UsedGoods() {
   const { isLoading, isError, data } = useQuery('usedgoods', allGoodsGet);
-  console.log(data);
   if (isLoading) {
     return <p>로딩중입니다....!</p>;
   }
