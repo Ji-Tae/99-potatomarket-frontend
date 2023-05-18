@@ -171,7 +171,7 @@ function LoginSignup() {
                   value={signupEmail}
                   onChange={signupEmailHandler}
                   type={'email'}
-                  pattern={'.+@gmail.com'}
+                  pattern={'[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*'}
                 />
               </InputItem>
               <InputItem margin={'20px'}>
