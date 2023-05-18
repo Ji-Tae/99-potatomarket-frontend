@@ -8,7 +8,6 @@ const Paging = (props) => {
   const handlePageChange = (page) => {
     setPage(page);
   };
-
   return (
     <Pagination
       activePage={page}
