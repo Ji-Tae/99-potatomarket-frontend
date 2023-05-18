@@ -32,4 +32,6 @@ const getGoodsDetail = async (postId) => {
   return response.data;
 };
 
+//
+
 export { uploadPost, allGoodsGet, bestGoodsGet, getGoodsDetail };

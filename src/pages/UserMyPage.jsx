@@ -38,9 +38,7 @@ function UserMyPage() {
           <CardList>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Title>관심목록</Title>
-              {/* <Button style={{display:'flex',}}>
-            <Title style={{fontSize:'17px'}}>더보기 ▶︎</Title>
-          </Button> */}
+           
             </div>
             <Cards>
               <Card />
@@ -54,11 +52,7 @@ function UserMyPage() {
           <CardList>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Title>판매중</Title>
-              {/* <Button>
-            <Title style={{fontSize:'17px' }}>더보기 ▶︎</Title>
-          </Button> */}
             </div>
-
             <Cards>
               <Card>
                 <Buttons>
@@ -123,9 +117,6 @@ function UserMyPage() {
           <CardList>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Title>거래 완료</Title>
-              {/* <Button >
-            <Title style={{fontSize:'17px'}}>더보기 ▶︎</Title>
-          </Button> */}
             </div>
             <Cards>
               <Card />
@@ -183,3 +174,4 @@ const Buttons = styled.div`
 //더보기버튼 거래완료 가로선 맞추기
 //더보기버튼 스타일 정리
 //컨테이너 밑에 배경색 채우기
+
