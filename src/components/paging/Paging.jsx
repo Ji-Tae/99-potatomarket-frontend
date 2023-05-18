@@ -39,8 +39,8 @@ const Paging = () => {
       itemsCountPerPage={4}
       totalItemsCount={20}
       pageRangeDisplayed={5}
-      prevPageText={"‹"}
-      nextPageText={"›"}
+      prevPageText={'‹'}
+      nextPageText={'›'}
       onChange={handlePageChange}
     />
   );
