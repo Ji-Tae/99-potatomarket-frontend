@@ -7,6 +7,7 @@ import Button from '../components/common/Button';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import LoginSignup from './LoginSignup';
+import Paging from '../components/paging/Paging';
 
 function UserMyPage() {
   const cookie = Cookies.get('accessToken');
@@ -47,7 +48,7 @@ function UserMyPage() {
               <Card />
             </Cards>
           </CardList>
-
+         <Paging/>
           {/* 판매중 */}
           <CardList>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -112,7 +113,7 @@ function UserMyPage() {
               </Card>
             </Cards>
           </CardList>
-
+          <Paging/>
           {/* 거래완료 */}
           <CardList>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -125,6 +126,7 @@ function UserMyPage() {
               <Card />
             </Cards>
           </CardList>
+          <Paging/>
         </Layout>
       ) : (
         <LoginSignup />
