@@ -257,7 +257,7 @@ function LoginSignup() {
                   type={'text'}
                 />
               </InputItem>
-              <Button type={'reset'} width={'112px'} height={'40px'} bc={'#fff'} shadow={'1px 1px 5px 1px #BEB47D'}>
+              <Button type={'submit'} width={'112px'} height={'40px'} bc={'#fff'} shadow={'1px 1px 5px 1px #BEB47D'}>
                 <Text fontSize={'15px'}>회원가입</Text>
               </Button>
             </CardDesc>

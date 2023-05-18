@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Pagination from "react-js-pagination";
+import Pagination from 'react-js-pagination';
 
 const Paging = () => {
   const [page, setPage] = useState(1);
@@ -15,8 +15,8 @@ const Paging = () => {
       itemsCountPerPage={4}
       totalItemsCount={20}
       pageRangeDisplayed={5}
-      prevPageText={"‹"}
-      nextPageText={"›"}
+      prevPageText={'‹'}
+      nextPageText={'›'}
       onChange={handlePageChange}
     />
   );
