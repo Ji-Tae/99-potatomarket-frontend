@@ -5,11 +5,20 @@ import Text from '../components/common/Text';
 import { styled } from 'styled-components';
 import { HeartOutlined, HeartFilled, MessageOutlined, EyeOutlined } from '@ant-design/icons';
 import InputBox from '../components/common/InputBox';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getGoodsDetail } from '../api/posts';
 import { useMutation } from 'react-query';
+import { goChat } from '../api/user';
 
 function GoodsDetail() {
+  // 뒤로가기 버튼
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  //상세페이지를 위한 겟 요청
   const { post_id } = useParams();
 
   const [details, setDetails] = useState(null);
@@ -18,14 +27,21 @@ function GoodsDetail() {
       setDetails(response.data);
     },
   });
+  //마운트 되자마자 실행 되어야하기 때문에 쓴 useEffect
   useEffect(() => {
     detailsMutation.mutate(post_id);
   }, []);
 
+  const chatMutation = useMutation(goChat);
+
+  const goChatHandler = () => {
+    chatMutation.mutate();
+    window.open(`${process.env.REACT_APP_CHAT_URL}/api/chat`);
+  };
   return (
     <Layout>
       <Container>
-        <Button width={'15%'} height={'50px'} bc={'white'} outlinecolor={'#beb47d'} linewidth={'2px'}>
+        <Button width={'15%'} height={'50px'} bc={'white'} outlinecolor={'#beb47d'} linewidth={'2px'} onClick={goBack}>
           <Text fontSize={'22px'} fontWeight={'700'} color={'#beb47d'}>
             ◀︎ 뒤로가기
           </Text>
@@ -70,7 +86,7 @@ function GoodsDetail() {
             </GoodsCounts>
           </GoodsDesc>
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Button width={'15%'} height={'50px'} bc={'#9e7979'}>
+            <Button width={'15%'} height={'50px'} bc={'#9e7979'} onClick={goChatHandler}>
               <Text fontSize={'20px'} fontWeight={'bold'} color={'#ffffff'}>
                 거래 채팅하기
               </Text>

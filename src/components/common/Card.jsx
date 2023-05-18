@@ -4,12 +4,9 @@ import { HeartOutlined, HeartFilled, MessageOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
 function Card({ width, children, height, card }) {
-  console.log(`card=>${card}`);
   const navigate = useNavigate();
   const goGoodsDetail = () => {
-    navigate(`/goodsdetails/${card.post_id}`, {
-      state: card,
-    });
+    navigate(`/goodsdetails/${card.post_id}`);
   };
 
   return (
