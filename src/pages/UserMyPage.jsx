@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '../components/common/Card';
 import styled from 'styled-components';
 import Layout from '../components/common/Layout';
@@ -8,14 +8,41 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import LoginSignup from './LoginSignup';
 import Paging from '../components/paging/Paging';
+import { useQuery, useQueryClient } from 'react-query';
+import { getLikeList } from '../api/posts';
+import { da } from 'date-fns/locale';
 
 function UserMyPage() {
+  const queryClient = useQueryClient();
+
+  const [page, setPage] = useState(0);
+
+  const { data, isLoadig } = useQuery(['likelist', page], () => getLikeList(page), {
+    keepPreviousData: true,
+    select: (data) => {
+      return {
+        likeList: data.likedProducts,
+        hasMore: data.totalPages,
+      };
+    },
+  });
+  console.log(data);
+  useEffect(() => {
+    if (data?.hasMore) {
+      queryClient.prefetchQuery(['likelist', page + 1], () => {
+        getLikeList(page + 1);
+      });
+    }
+  }, [data, page, queryClient]);
+
   const cookie = Cookies.get('accessToken');
+
   const navigate = useNavigate();
 
   const goUpload = () => {
     navigate('/uploads');
   };
+
   return (
     <>
       {cookie ? (
@@ -39,16 +66,16 @@ function UserMyPage() {
           <CardList>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Title>관심목록</Title>
-           
             </div>
             <Cards>
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+              {isLoadig
+                ? 'Loadig...'
+                : data?.likeList?.map((card) => {
+                    return <Card key={card.Post.post_id} card={card.Post} />;
+                  })}
             </Cards>
+            <Paging setPage={setPage} page={page} totalPages={data?.hasMore} />
           </CardList>
-         <Paging/>
           {/* 판매중 */}
           <CardList>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -113,7 +140,7 @@ function UserMyPage() {
               </Card>
             </Cards>
           </CardList>
-          <Paging/>
+          <Paging />
           {/* 거래완료 */}
           <CardList>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -126,7 +153,7 @@ function UserMyPage() {
               <Card />
             </Cards>
           </CardList>
-          <Paging/>
+          <Paging />
         </Layout>
       ) : (
         <LoginSignup />
@@ -176,4 +203,3 @@ const Buttons = styled.div`
 //더보기버튼 거래완료 가로선 맞추기
 //더보기버튼 스타일 정리
 //컨테이너 밑에 배경색 채우기
-
